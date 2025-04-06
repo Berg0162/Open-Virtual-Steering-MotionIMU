@@ -30,7 +30,7 @@ This repository focuses on using an **MPU6050** sensor, a 3-axis accelerometer +
 ---
 
 ## 🔧 How it Works
-This firmware implements a BLE steering controller using a standardized protocol observed in commercial steering devices.
+This firmware implements a **BLE steering controller** using a standardized protocol observed in commercial steering devices.
 It configures a BLE server to:
 1. Pair with a BLE client application using a common **steering profile**
 2. Continuously sample motion data from the MPU6050
