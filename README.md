@@ -14,7 +14,7 @@ This repo is part of the **Open Virtual Steering** initiative, a research-driven
 
 ## 🧭 Motion-Based Steering with IMUs
 
-This repository focuses on using an **MPU6050** sensor, a 3-axis accelerometer + 3-axis gyroscope, to detect the rider's **handlebar steering or bike leaning** and convert that motion into **steering commands**.
+This repository focuses on using an **MPU6050** sensor, a 3-axis accelerometer + 3-axis gyroscope, to detect the rider's **handlebar turning or bike leaning** and convert that motion into **steering commands**.
 
 - 🌀 **MPU6050**: Low-cost, I²C-compatible motion sensor
 - 🎮 **Use case**: Lean or turn the handlebar to steer the avatar
