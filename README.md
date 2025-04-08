@@ -1,11 +1,11 @@
 # OpenVirtualSteering-MotionIMU
 
-The **Romans** knew it already: **`"Sterzare Necesse Est"`** (free after Plutarch), and it still holds true in the world of **virtual cycling**.
+The **Romans** knew it already: _"Sterzare Necesse Est!"_ (free after Plutarch), and it still holds true in the world of **virtual cycling**.
 
 <details>
 <summary>What it means</summary>
   
-The original quote **Navigare Necesse Est** ("Navigation is Necessary") was humorously adapted here by replacing _Navigare_ with the Italian verb for [**Steering**](https://en.wiktionary.org/wiki/sterzare), aligning it with the project's theme.
+The original quote **Navigare Necesse Est** ("To Sail is Necessary") was humorously adapted here by replacing _Navigare_ with the Italian verb for [**steering**](https://en.wiktionary.org/wiki/sterzare), aligning it with the project's theme.
 </details>
 
 This repo is part of the **Open Virtual Steering** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.
