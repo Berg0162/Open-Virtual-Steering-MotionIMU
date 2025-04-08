@@ -10,7 +10,7 @@ The original quote **Navigare Necesse Est** ("To Sail is Necessary") was humorou
 
 This repo is part of the **Open Virtual Steering** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.<br>
 
-<img src="./media/QuadOrientation.png" width="400" height="400" alt="Quad Orientation"><br>
+<img src="./media/QuadOrientation.png" width="250" height="250" alt="Quad Orientation"><br>
 
 ---
 
