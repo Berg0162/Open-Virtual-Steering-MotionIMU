@@ -8,14 +8,15 @@ The **Romans** knew it already: _"Sterzare Necesse Est!"_ (free after Plutarch),
 The original quote **Navigare Necesse Est** ("To Sail is Necessary") was humorously adapted here by replacing _Navigare_ with the Italian verb for [**steering**](https://en.wiktionary.org/wiki/sterzare), aligning it with the project's theme.
 </details>
 
-This repo is part of the **Open Virtual Steering** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.
+This repo is part of the **Open Virtual Steering** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.<br>
+
+<img src="./media/QuadOrientation.png" width="400" height="400" alt="Quad Orientation"><br>
 
 ---
 
 ## 🧭 Motion-Based Steering with IMUs
 
 This repository focuses on using an **MPU6050** sensor, a 3-axis accelerometer + 3-axis gyroscope, to detect the rider's **handlebar turning or bike leaning** and convert that motion into **steering commands**.
-
 - 🌀 **MPU6050**: Low-cost, I²C-compatible motion sensor
 - 🎮 **Use case**: Lean or turn the handlebar to steer the avatar
 - ⚙️ **Filtering** and **smoothing** algorithms provided
