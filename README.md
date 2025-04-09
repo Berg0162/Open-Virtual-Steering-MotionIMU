@@ -92,7 +92,7 @@ If you are a <b>rights holder</b> and believe this project includes content that
 ---
 # 🔴 Natural Steering made Possible
 
-This device is enabling <b>natural steering</b> movements with your handlebars and your body position! Body position (a.k.a. leaning) is only possible when your indoor bike setup allows for (with a rocker plate). The present code is optimized for natural steering even during the heavy wobbling conditions of a rocker plate!<br> 
+This device is enabling <b>natural steering</b> movements with your handlebars and your body position! Body position (a.k.a. leaning) is only possible when your indoor bike setup allows for (with a rocker plate)! The present code is optimized for natural steering even during the heavy wobbling conditions of a rocker plate!<br> 
 `Wobbling -> Noise -> Spurious Sensor Drift!`<br> 
 The code can detect the difference between leaning and rocking the bike. It was a challenge to separate actual steering from natural cycling movements. With a **rocker-plate-bike-setup**, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplifies the effect on the avatar!<br>
 <img src="./media/MPU-6050 2-600x600w.jpg" width="200" height="200" alt="MPU6050" align="left">
