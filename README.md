@@ -43,7 +43,7 @@ An MPU-6050 sensor module consists of a 3-axis accelerometer and a 3-axis gyrosc
 Put MPU-6050 flat on the table, assure that the face with label is upward and a dot on this surface is on the top left corner. Then the upright direction upward is the z-axis of the chip. The direction from left to right is regarded as the X-axis. Accordingly the direction from back to front is defined as the Y-axis. The MPU-6050’s onboard Digital Motion Processor (<b>DMP</b>) offloads processing that would normally have to take place on the microprocessor. It maintains an internal buffer that combines data from the gyro and accelerometer and computes orientation. The <b>DMP</b> also takes care of the applying the offsets.<br>
 <br clear="left">
 
-An excellent introductory explaining the MPU-6050 can be found on the [Dronebot Workshop](https://dronebotworkshop.com/mpu-6050-level/).<br>
+A comprehensive description of the MPU-6050 can be found on [MPU-6050 Explained](https://mjwhite8119.github.io/Robots/mpu6050).<br>
 The <b>DMP</b> pre-processed MPU-6050 data is next handled in firmware code using:
 - Complementary filtering
 - Motion thresholds
