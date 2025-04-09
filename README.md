@@ -37,8 +37,7 @@ It configures a BLE server to:
 4. Send steering data to the client at regular intervals
 
 ### 🌀 MPU-6050
-The MPU-6050 is a 6-axis(combines 3-axis Gyroscope, 3-axis Accelerometer) motion tracking devices. Changes in motion, acceleration and rotation can be detected. It is commonly used in robotics, gaming controllers, and other electronic devices that require motion detection. Its high accuracy and low cost make it very popular among the DIY community. <br>
-An MPU-6050 sensor module consists of a 3-axis accelerometer and a 3-axis gyroscope.
+The MPU-6050 is a 6-axis (combines 3-axis Gyroscope plus 3-axis Accelerometer) motion tracking devices. Changes in motion, acceleration and rotation can be detected. It is commonly used in robotics, gaming controllers, and other electronic devices that require motion detection. Its high accuracy and low cost make it very popular among the DIY community. <br>
 <p align=left><img src="./media/QuadOrientation.png" width="250" height="250" alt="Quad Orientation" align="left"></p><br>
 Put MPU-6050 flat on the table, assure that the face with label is upward and a dot on this surface is on the top left corner. Then the upright direction upward is the z-axis of the chip. The direction from left to right is regarded as the X-axis. Accordingly the direction from back to front is defined as the Y-axis. The MPU-6050’s onboard Digital Motion Processor (<b>DMP</b>) offloads processing that would normally have to take place on the microprocessor. It maintains an internal buffer that combines data from the gyro and accelerometer and computes orientation. The <b>DMP</b> also takes care of the applying the offsets.<br>
 <br clear="left">
@@ -91,11 +90,11 @@ If you are a <b>rights holder</b> and believe this project includes content that
 </details>
 
 ---
-# 🔴 Motion Sensor: Inertial Measuring Unit, MPU6050
+# 🔴 Natural Steering made Possible
 
-This device is enabling <b>natural steering</b> movements with your handlebars and your body position! Body position (a.k.a. leaning) only when your indoor bike setup allows for (with a rocker plate). The present code is optimized for steering during the heavy wobbling conditions of a low cost (DIY) rocker plate!<br> 
-<b>Wobbling -> Noise -> Spurious Sensor Drift!</b><br> 
-It was a challenge to separate steering from natural cycling movements (bike wobbling). With a rocker plate bike setup, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplifies the effect on the avatar!<br>
+This device is enabling <b>natural steering</b> movements with your handlebars and your body position! Body position (a.k.a. leaning) is only possible when your indoor bike setup allows for (with a rocker plate). The present code is optimized for natural steering even during the heavy wobbling conditions of a rocker plate!<br> 
+`Wobbling -> Noise -> Spurious Sensor Drift!`<br> 
+The code can detect the difference between leaning and rocking the bike. It was a challenge to separate actual steering from natural cycling movements. With a **rocker-plate-bike-setup**, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplifies the effect on the avatar!<br>
 <img src="./media/MPU-6050 2-600x600w.jpg" width="200" height="200" alt="MPU6050" align="left">
 
 The very low cost MPU6050 is connected to the board with I2C:
