@@ -90,11 +90,40 @@ If you are a <b>rights holder</b> and believe this project includes content that
 </details>
 
 ---
-# 🔴 Natural Steering made Possible
+## 🧠 Motion-Based Steering Processing Pipeline
 
-This device is enabling <b>natural steering</b> movements with your handlebars and your body position! Body position (a.k.a. leaning) is only possible when your indoor bike setup allows for (with a rocker plate)! The present code is optimized for natural steering even during the heavy wobbling conditions of a rocker plate!<br> 
-`Wobbling -> Noise -> Spurious Sensor Drift!`<br> 
-The code can detect the difference between leaning and rocking the bike. It was a challenge to separate actual steering from natural cycling movements. With a **rocker-plate-bike-setup**, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplifies the effect on the avatar!<br>
+This device is enabling natural steering movements with <b>your handlebars</b> and <b>your body position</b>! Shifting body position (a.k.a. **leaning**) is only possible when your indoor bike setup allows for, **with a rocker plate**! The present code is optimized for natural steering even during the **heavy wobbling conditions** of a rocker plate! `Wobbling -> Noise -> Spurious Sensor Drift!`<br> 
+The code can detect the difference between **leaning and rocking the bike**. It was a challenge to separate actual steering from natural cycling movements. Afterall, the body movement to keep the pedals  turning, induce distinctive bike movements! With a **rocker-plate-bike-setup**, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplify the effect on the avatar!<br>
+
+The `getMPU6050State()` function processes motion data from the MPU6050 sensor to produce a **steering value** based on the rider’s **handlebar movements (Yaw)** and **leaning (Roll)**. Here’s a high-level breakdown of the processing steps:
+
+1. **Data Acquisition**  
+   - The sensor is sampled in a short loop (≈44 ms total).  
+   - Raw angle readings are taken from the **Z-axis (Yaw)** and **X-axis (Roll)**.
+
+2. **Noise Reduction**  
+   - Each reading is processed through a **Kalman filter** and an **Exponential Moving Average (EMA)** filter.  
+   - This reduces measurement noise and improves stability for steering detection.
+
+3. **Statistical Filtering**  
+   - The **standard deviation** between current and previous angles is calculated.  
+   - This helps differentiate between real steering input and unwanted noise or spontaneous drift.
+
+4. **Direction and Validity Check**  
+   - Yaw and Roll data are compared to determine **coherent movement** (i.e., leaning and turning in the same direction).  
+   - If both indicate a turn (left or right), the movement is considered intentional steering.
+
+5. **Yaw Offset Update**  
+   - If yaw deviation exceeds a defined threshold, the baseline yaw angle is updated (to account for drift or re-orientation).
+
+6. **Rocking Detection**  
+   - Excessive roll deviation is flagged as **rocking motion**, which disables steering output to avoid false input from out-of-saddle riding.
+
+7. **Final Output**  
+   - If the motion is valid and not considered rocking, a **combined yaw + roll steering value** is returned.  
+   - This value is later encoded and sent to the BLE client as **steering control data**.
+
+---
 <img src="./media/MPU-6050 2-600x600w.jpg" width="200" height="200" alt="MPU6050" align="left">
 
 The very low cost MPU6050 is connected to the board with I2C:
@@ -119,7 +148,6 @@ A SSD1306 display is connected the same way:
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 ```
 
----
 <details>
 <summary>⚖️ <b>Legal Notice (EU Context)</b></summary>
 
