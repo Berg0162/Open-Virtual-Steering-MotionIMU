@@ -24,15 +24,19 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 - [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/Berg0162/OpenVirtualSteering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
 - [`OpenVirtualSteering-VoiceControl`](https://github.com/Berg0162/OpenVirtualSteering-VoiceControl) – Voice input via ML on MEMS microphones
 
-## 🔧 How it Works
-This firmware implements a **BLESteeringServer** using a standardized protocol observed in commercial steering devices.
-It configures a BLE server to:
-1. Pair with a BLE client application using a common **steering profile**
-2. Continuously sample motion data from the MPU6050
-3. Interpret movement into **steering angles**
-4. Send steering data to the client at regular intervals
+## 🧭 How It Works
 
-### 🌀 MPU-6050
+This firmware functions as a **BLE Steering Controller**, structured around two main building blocks:
+
+1. 🧱 **BLESteeringServer**  
+   A reusable BLE library responsible for advertising, pairing, and sending steering data using a BLE steering profile.
+
+2. 🎮 **Motion-Based HID Handler**  
+   This repository uses an **MPU6050 motion sensor** to interpret tilt and yaw movement of the bike or handlebars. Sensor data is processed using Kalman and EMA filters, and converted into smooth, real-time steering angles.
+
+The firmware continuously monitors motion, filters out noise and unintentional movement (like out-of-saddle rocking), and sends validated steering commands via `BLESteeringServer::updateSteeringValue()`.
+
+## 🌀 MPU-6050
 The MPU-6050 is a 6-axis (combines 3-axis Gyroscope plus 3-axis Accelerometer) motion tracking devices. Changes in motion, acceleration and rotation can be detected. It is commonly used in robotics, gaming controllers, and other electronic devices that require motion detection. Its high accuracy and low cost make it very popular among the DIY community. <br>
 <p align=left><img src="./media/QuadOrientation.png" width="250" height="250" alt="Quad Orientation" align="left"></p><br>
 Put MPU-6050 flat on the table, assure that the face with label is upward and a dot on this surface is on the top left corner. Then the upright direction upward is the z-axis of the chip. The direction from left to right is regarded as the X-axis. Accordingly the direction from back to front is defined as the Y-axis. The MPU-6050’s onboard Digital Motion Processor (<b>DMP</b>) offloads processing that would normally have to take place on the microprocessor. It maintains an internal buffer that combines data from the gyro and accelerometer and computes orientation. The <b>DMP</b> also takes care of the applying the offsets.<br>
