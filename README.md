@@ -10,8 +10,6 @@ The original quote **Navigare Necesse Est** ("To Sail is Necessary") was humorou
 
 This repo is part of the **Open Virtual Steering** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.<br>
 
----
-
 ## 🧭 Motion-Based Steering with _Inertial Measurement Unit_ (IMU)
 
 This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerometer + 3-axis gyroscope, to detect the rider's **handlebar turning and/or bike leaning** and convert that motion into **steering commands**. [See Wikipedia for Natural Bike Dynamics](https://en.wikipedia.org/wiki/Bicycle_and_motorcycle_dynamics).
@@ -22,14 +20,12 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 ![Open Virtual Steering Diagram](/media/OpenVirtualSteering_Overview.png)
 
 ## 📚 Related Repositories
-
-- [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/yourname/OpenVirtualSteering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
-- [`OpenVirtualSteering-VoiceControl`](https://github.com/yourname/OpenVirtualSteering-VoiceControl) – Voice input via ML on MEMS microphones
-
----
+- [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server) - Critical Shared Backend (Arduino library)
+- [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/Berg0162/OpenVirtualSteering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
+- [`OpenVirtualSteering-VoiceControl`](https://github.com/Berg0162/OpenVirtualSteering-VoiceControl) – Voice input via ML on MEMS microphones
 
 ## 🔧 How it Works
-This firmware implements a **BLE steering controller** using a standardized protocol observed in commercial steering devices.
+This firmware implements a **BLESteeringServer** using a standardized protocol observed in commercial steering devices.
 It configures a BLE server to:
 1. Pair with a BLE client application using a common **steering profile**
 2. Continuously sample motion data from the MPU6050
@@ -48,18 +44,15 @@ The <b>DMP</b> pre-processed MPU-6050 data is next handled in firmware code usin
 - Motion thresholds
 - Optional dead zones for stable centering
 
----
+## 🧱 Dependencies
 
-## ⚙️ Supported Microcontroller Platforms
-
-- **ESP32** (NimBLE-Arduino)
-- **nRF52840** (Adafruit Bluefruit)
-
-Tested boards:
-- [Adafruit Feather ESP32 V2](https://www.adafruit.com/product/5400)
-- [Adafruit Feather nRF52840 Express](https://www.adafruit.com/product/4062)
-
----
++ [Arduino core for ESP32](https://github.com/espressif/arduino-esp32)
++ [NimBLE-Arduino version 2.x](https://github.com/h2zero/NimBLE-Arduino)
++ [BLESteeringServer](https://github.com/Berg0162/BLE-Steering-Server)
++ [MPU6050_light](https://github.com/rfetick/MPU6050_light)
++ **Supported MCU's** with **NimBLE-Arduino**
+    - Espressif: ESP32, ESP32C3, ESP32S3
+    - Nordic: nRF51, nRF52 series (**Requires** using [n-able arduino core](https://github.com/h2zero/n-able-Arduino))
 
 ## 🧪 Testing & Validation
 
