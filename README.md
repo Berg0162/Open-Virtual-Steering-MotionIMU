@@ -32,7 +32,7 @@ This firmware functions as a **BLE Steering Controller**, structured around two 
    A reusable BLE library responsible for advertising, pairing, and sending steering data using a BLE steering profile.
 
 2. 🎮 **Motion-Based HID Handler**  
-   This repository uses an **MPU6050 motion sensor** to interpret tilt and yaw movement of the bike or handlebars. Sensor data is processed using Kalman and EMA filters, and converted into smooth, real-time steering angles.
+   This repository uses an **MPU6050 motion sensor** to interpret roll and yaw movement of the bike or handlebars. Sensor data is processed using Kalman and EMA filters, and converted into smooth, real-time steering angles.
 
 The firmware continuously monitors motion, filters out noise and unintentional movement (like out-of-saddle rocking), and sends validated steering commands via `BLESteeringServer::updateSteeringValue()`.
 
