@@ -141,6 +141,8 @@ A SSD1306 display is connected the same way:
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 ```
 
+---
+
 <details>
 <summary>⚖️ <b>Legal Notice (EU Context)</b></summary>
 
