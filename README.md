@@ -152,4 +152,6 @@ Users must ensure their own compliance with **national implementations of EU dir
 
 </details>
 
+---
+
 > 🧠 Contributions and discussions are welcome! Feel free to fork, experiment, or share your ideas for smarter indoor cycling interaction.
