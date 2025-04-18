@@ -86,13 +86,19 @@ This repository does <b>not include or promote any circumvention of technologica
 If you are a <b>rights holder</b> and believe this project includes content that <b>violates your intellectual property rights</b>, please <b>open an issue</b> in this repository. We are committed to responding promptly and respectfully to legitimate concerns.
 </details>
 
----
-## 🧠 Motion-Based Steering Processing Pipeline
+## Mounting MPU-6050 axis to Bike Frame
+<br>
+teskt
+<img src="./media/MPU-6050-730x370.jpg" width="730" height="370" alt="MPU Orientation" align="left"><br>
+tekst
+<br>
+
+## 🧠 Motion-Based Steering Processing Pipeline<br>
 
 This device is enabling natural steering movements with <b>your handlebars</b> and <b>your body position</b>! Shifting body position (a.k.a. **leaning**) is only possible when your indoor bike setup allows for, **with a rocker plate**! The present code is optimized for natural steering even during the **heavy wobbling conditions** of a rocker plate! `Wobbling -> Noise -> Spurious Sensor Drift!`<br> 
 The code can detect the difference between **leaning and rocking the bike**. It was a challenge to separate actual steering from natural cycling movements. Afterall, the body movement to keep the pedals turning, induces distinctive bike movements! With a **rocker-plate-bike-setup**, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplify the effect on the avatar!<br>
 
-The `getMPU6050State()` function processes motion data from the MPU6050 sensor to produce a **steering value** based on the rider’s **handlebar movements (Yaw)** and **leaning (Roll)**. Here’s a high-level breakdown of the processing steps:
+The `getSteeringState()` function processes motion data from the MPU6050 sensor to produce a **steering value** based on the rider’s **handlebar movements (Yaw)** and **leaning (Roll)**. Here’s a high-level breakdown of the processing steps:
 
 1. **Data Acquisition**  
    - The sensor is sampled in a short loop (≈44 ms total).  
