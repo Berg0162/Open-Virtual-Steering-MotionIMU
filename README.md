@@ -132,17 +132,6 @@ The `getSteeringState()` function processes motion data from the MPU6050 sensor 
    - This value is later encoded and sent to the BLE client as **steering control data**.
 
 ---
-<img src="./media/MPU-6050 2-600x600w.jpg" width="200" height="200" alt="MPU6050" align="left">
-
-The very low cost MPU6050 is connected to the board with I2C:
-
-```C++
-#include <MPU6050_light.h>
-// Instantiate MPU6050 sensor
-MPU6050 mpu(Wire);
-```
-
----
 
 <details>
 <summary>⚖️ <b>Legal Notice (EU Context)</b></summary>
