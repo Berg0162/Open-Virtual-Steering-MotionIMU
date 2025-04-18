@@ -86,14 +86,24 @@ This repository does <b>not include or promote any circumvention of technologica
 If you are a <b>rights holder</b> and believe this project includes content that <b>violates your intellectual property rights</b>, please <b>open an issue</b> in this repository. We are committed to responding promptly and respectfully to legitimate concerns.
 </details>
 
-## Mounting MPU-6050 axis to Bike Frame
-<br>
-teskt
-<img src="./media/MPU-6050-730x370.jpg" width="730" height="370" alt="MPU Orientation" align="left"><br>
-tekst
-<br>
+## 🧭 Mounting the MPU-6050: Axis Alignment Matters
 
-## 🧠 Motion-Based Steering Processing Pipeline<br>
+<img src="./media/MPU-6050-730x370.jpg" width="600" height="300" alt="MPU Orientation" align="left"><br>
+For accurate steering detection, it is essential to **correctly align the MPU-6050's axes with the bike frame**:
+
+- 🔵 The **X-axis** (often labeled on the breakout board) should align with the **side-to-side axis** of the bike — i.e., it should point **left to right** across the handlebars. This axis is used to detect **roll/leaning movement**.
+- 🔴 The **Z-axis**, which points out of the chip surface (perpendicular to the board), should align **vertically**. This is used to detect **yaw/rotation** of the handlebars.
+- 🟢 The **Y-axis** will point **forward/backward**, parallel to the direction of travel, but is not used for steering in this implementation.
+
+> ❗ **Incorrect mounting** (e.g., upside down, rotated, or skewed) will lead to inverted or erratic steering behavior.
+
+💡 If you need to invert or compensate for mounting differences, the code allows you to **invert the sign of the roll angle** by enabling the `INVERT_ROLLANGLE_SIGN` define.
+
+
+
+
+
+## 🧠 Motion-Based Steering Processing Pipeline
 
 This device is enabling natural steering movements with <b>your handlebars</b> and <b>your body position</b>! Shifting body position (a.k.a. **leaning**) is only possible when your indoor bike setup allows for, **with a rocker plate**! The present code is optimized for natural steering even during the **heavy wobbling conditions** of a rocker plate! `Wobbling -> Noise -> Spurious Sensor Drift!`<br> 
 The code can detect the difference between **leaning and rocking the bike**. It was a challenge to separate actual steering from natural cycling movements. Afterall, the body movement to keep the pedals turning, induces distinctive bike movements! With a **rocker-plate-bike-setup**, steering is as natural as possible. Leaning to the right or left is detected in combination with turning the handlebars and amplify the effect on the avatar!<br>
