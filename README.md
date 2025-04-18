@@ -67,8 +67,6 @@ Testing was conducted using [**nRF Connect for Mobile**](https://www.nordicsemi.
 
 The IMU’s angle mapping was adjusted to ensure **stable, realistic steering behavior** while avoiding overcorrection or jitter from natural bike motion.
 
----
-
 ## ⚠️ Disclaimer
 
 <details>
@@ -88,20 +86,17 @@ If you are a <b>rights holder</b> and believe this project includes content that
 
 ## 🧭 Mounting the MPU-6050: Axis Alignment Matters
 
-<img src="./media/MPU-6050-730x370.jpg" width="600" height="300" alt="MPU Orientation" align="left"><br>
-For accurate steering detection, it is essential to **correctly align the MPU-6050's axes with the bike frame**:
+<img src="/media/MPU-6050-730x370.jpg" alt="Axis Alignment" width="500">
 
-- 🔵 The **X-axis** (often labeled on the breakout board) should align with the **side-to-side axis** of the bike — i.e., it should point **left to right** across the handlebars. This axis is used to detect **roll/leaning movement**.
-- 🔴 The **Z-axis**, which points out of the chip surface (perpendicular to the board), should align **vertically**. This is used to detect **yaw/rotation** of the handlebars.
-- 🟢 The **Y-axis** will point **forward/backward**, parallel to the direction of travel, but is not used for steering in this implementation.
+For **instant steering detection**, it is essential to follow exactly how the code **aligns the MPU-6050's axes with the bike frame**, study the instructional picture above.
 
-> ❗ **Incorrect mounting** (e.g., upside down, rotated, or skewed) will lead to inverted or erratic steering behavior.
+- 🔵 The **X-axis** (labeled) will point **backward/forward**, parallel to the virtual direction of travel. This axis is used to detect **ROLL/leaning movement**.
+- 🔴 The **Z-axis**, which points out of the chip surface (perpendicular to the board), should align **vertically**. This is used to detect **YAW/rotation** of the handlebars.
+- 🟢 The **Y-axis** (labelled) should align with the **side-to-side axis** of the bike. This axis is used to detect **PITCH movement**, but is not used for steering in this implementation.
 
-💡 If you need to invert or compensate for mounting differences, the code allows you to **invert the sign of the roll angle** by enabling the `INVERT_ROLLANGLE_SIGN` define.
+> ❗ **Different mounting** (e.g., upside down, rotated, or skewed) will lead to inverted or erratic steering behavior.
 
-
-
-
+💡 If you need to invert or compensate for mounting differences, the code allows you to **invert the signs of X- and Y-axis** and the **MPU-6050_light library** even has an option for **upside down mounting**.
 
 ## 🧠 Motion-Based Steering Processing Pipeline
 
@@ -145,20 +140,6 @@ The very low cost MPU6050 is connected to the board with I2C:
 #include <MPU6050_light.h>
 // Instantiate MPU6050 sensor
 MPU6050 mpu(Wire);
-```
-<br clear="left">
-A SSD1306 display is connected the same way:
-
-```C++ 
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include "Adafruit_SSD1306_Icons.h"
-
-// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
-#define SCREEN_WIDTH 128              // OLED display width, in pixels
-#define SCREEN_HEIGHT 64              // OLED display height, in pixels
-#define OLED_RESET     -1             // Reset pin # (or -1 if sharing Arduino reset pin)
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 ```
 
 ---
