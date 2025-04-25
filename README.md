@@ -21,8 +21,8 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 
 ## 📚 Related OVS Repositories
 - [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server) - Critical Shared Backend (Arduino library)
-- [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/Berg0162/OpenVirtualSteering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
-- [`OpenVirtualSteering-VoiceControl`](https://github.com/Berg0162/OpenVirtualSteering-VoiceControl) – Voice input via ML on MEMS microphones
+- [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/Berg0162/Open-Virtual-Steering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
+- [`OpenVirtualSteering-VoiceControl`](https://github.com/Berg0162/Open-Virtual-Steering-VoiceControl) – Voice input via ML on MEMS microphones
 
 ## 🧭 How It Works
 
