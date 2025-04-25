@@ -1,4 +1,4 @@
-# OpenVirtualSteering-MotionIMU
+# Open Virtual Steering with MotionIMU
 
 The **Romans** knew it already: _"Sterzare Necesse Est!"_ (free after Plutarch), and it still holds true in the world of **virtual cycling**.
 
@@ -8,7 +8,7 @@ The **Romans** knew it already: _"Sterzare Necesse Est!"_ (free after Plutarch),
 The original quote **Navigare Necesse Est** ("To Sail is Necessary") was humorously adapted here by replacing _Navigare_ with the Italian verb for [**steering**](https://en.wiktionary.org/wiki/sterzare), aligning it with the project's theme.
 </details>
 
-This repo is part of the **Open Virtual Steering** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.<br>
+This repo is part of the **Open Virtual Steering (OVS)** initiative, a research-driven open-source project exploring **alternative input methods** for **steering in virtual cycling platforms**.<br>
 
 ## 🧭 Motion-Based Steering with _Inertial Measurement Unit_ (IMU)
 
@@ -19,7 +19,7 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 
 ![Open Virtual Steering Diagram](/media/OpenVirtualSteering_Overview.png)
 
-## 📚 Related Repositories
+## 📚 Related OVS Repositories
 - [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server) - Critical Shared Backend (Arduino library)
 - [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/Berg0162/OpenVirtualSteering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
 - [`OpenVirtualSteering-VoiceControl`](https://github.com/Berg0162/OpenVirtualSteering-VoiceControl) – Voice input via ML on MEMS microphones
