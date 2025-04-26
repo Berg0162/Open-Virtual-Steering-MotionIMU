@@ -21,8 +21,8 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 
 ## 📚 Related OVS Repositories
 - [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server) - Critical Shared Backend (Arduino library)
-- [`OpenVirtualSteering-DiscreteHIDs`](https://github.com/Berg0162/Open-Virtual-Steering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
-- [`OpenVirtualSteering-VoiceControl`](https://github.com/Berg0162/Open-Virtual-Steering-VoiceControl) – Voice input via ML on MEMS microphones
+- [`Open-Virtual-Steering-DiscreteHIDs`](https://github.com/Berg0162/Open-Virtual-Steering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
+- [`Open-Virtual-Steering-VoiceControl`](https://github.com/Berg0162/Open-Virtual-Steering-VoiceControl) – Voice input via ML on MEMS microphones
 
 ## 🧭 How It Works
 
@@ -83,6 +83,16 @@ This repository does <b>not include or promote any circumvention of technologica
 <summary>🔍 <b>Copyright & Contact</b></summary>
 If you are a <b>rights holder</b> and believe this project includes content that <b>violates your intellectual property rights</b>, please <b>open an issue</b> in this repository. We are committed to responding promptly and respectfully to legitimate concerns.
 </details>
+
+## 🚀 Quick Start
+
+1. Download or clone this repository.
+2. Unzip (if needed) and move the folder into your Arduino Sketchbook:
+3. Open the `.ino` file manually in Arduino IDE.
+4. Ensure required libraries are installed (see Dependencies).
+5. Compile and upload to your board.
+
+> ℹ️ The sketch file name may differ from the repository name. This is intentional for better versioning and description.
 
 ## 🧭 Mounting the MPU-6050: Axis Alignment Matters
 
