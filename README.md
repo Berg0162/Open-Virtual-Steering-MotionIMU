@@ -55,7 +55,8 @@ The <b>DMP</b> pre-processed MPU-6050 data is next handled in firmware code usin
 + [BLESteeringServer](https://github.com/Berg0162/BLE-Steering-Server)
 + HID specific library
    - [MPU6050_light](https://docs.arduino.cc/libraries/mpu6050_light)
-+ **Supported MCU's** with **NimBLE-Arduino**
+
+### **Supported MCU's** with **NimBLE-Arduino**
     - Espressif: ESP32, ESP32C3, ESP32S3
     - Nordic: nRF51, nRF52 series (**Requires** using [n-able arduino core](https://github.com/h2zero/n-able-Arduino))
 
