@@ -1,4 +1,4 @@
-# Open Virtual Steering with MotionIMU
+# <img src="/media/ESP32_Icon.png" width="110" height="34" align="bottom" alt="ESP32 Icon"> Open Virtual Steering with MotionIMU
 
 The **Romans** knew it already: _"Sterzare Necesse Est!"_ (free after Plutarch), and it still holds true in the world of **virtual cycling**.
 
