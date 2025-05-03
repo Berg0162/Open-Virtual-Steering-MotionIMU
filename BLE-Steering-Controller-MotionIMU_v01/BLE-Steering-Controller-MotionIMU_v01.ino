@@ -1,4 +1,22 @@
-#include <BLESteeringServer.h>
+// ========================================================
+// 🏁 Select BLE Stack
+// Uncomment *one* of the following lines to choose the BLE stack
+// ========================================================
+
+// #define USE_NIMBLE           // Use NimBLE-Arduino (lightweight)
+// #define USE_BLUEDROID        // Use default ESP32 Bluedroid stack
+
+// ========================================================
+// 📦 Include appropriate BLE Steering Server library
+// ========================================================
+
+#ifdef USE_NIMBLE
+  #include <NimBLESteeringServer.h>
+#elif defined(USE_BLUEDROID)
+  #include <BLESteeringServer.h>
+#else
+  #error "Please define a BLE stack: USE_NIMBLE or USE_BLUEDROID"
+#endif
 
 // ------------------------------------------------------------------------------------
 // COMPILER DIRECTIVE to allow/suppress DEBUG messages that help debugging...
