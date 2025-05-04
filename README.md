@@ -1,4 +1,4 @@
-# <img src="/media/ESP32_Icon.png" width="110" height="34" align="bottom" alt="ESP32 Icon"> Open Virtual Steering with MotionIMU
+# <img src="/media/ESP32_Icon.png" width="110" height="34" align="bottom" alt="ESP32 Icon"> Open Virtual Steering - MotionIMU
 
 The **Romans** knew it already: _"Sterzare Necesse Est!"_ (free after Plutarch), and it still holds true in the world of **virtual cycling**.
 
@@ -20,7 +20,8 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 ![Open Virtual Steering Diagram](/media/OpenVirtualSteering_Overview.png)
 
 ## 📚 Related OVS Repositories
-- [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server) - Critical Shared Backend (Arduino library)
+- [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server) - Bluedroid Host Backend Library
+- [`NimBLE-Steering-Server`](https://github.com/Berg0162/NimBLE-Steering-Server) - NimBLE Host Backend Library
 - [`Open-Virtual-Steering-DiscreteHIDs`](https://github.com/Berg0162/Open-Virtual-Steering-DiscreteHIDs) – Buttons, Joysticks, Rotary Encoder  
 - [`Open-Virtual-Steering-VoiceControl`](https://github.com/Berg0162/Open-Virtual-Steering-VoiceControl) – Voice input via ML on MEMS microphones
 
@@ -28,7 +29,7 @@ This repository focuses on using an **MPU-6050 IMU** sensor, a 3-axis accelerome
 
 This firmware functions as a **BLE Steering Controller**, structured around two main building blocks:
 
-1. 🧱 **BLESteeringServer**  
+1. 🧱 **BLESteeringServer** or **NimBLESteeringServer**<br>
    A reusable BLE library responsible for advertising, pairing, and sending steering data using a BLE steering profile.
 
 2. 🎮 **Motion-Based HID Handler**  
@@ -51,14 +52,17 @@ The <b>DMP</b> pre-processed MPU-6050 data is next handled in firmware code usin
 ## 🧱 Dependencies
 
 + [Arduino core for ESP32](https://github.com/espressif/arduino-esp32)
-+ [NimBLE-Arduino version 2.x](https://github.com/h2zero/NimBLE-Arduino)
-+ [BLESteeringServer](https://github.com/Berg0162/BLE-Steering-Server)
++ This sketch depends on installation of one of the following **Steering-Server-Backend-Libraries**:
+
+| BLE Host         | Library                             | Supported Hardware                     |
+|------------------|--------------------------------------|----------------------------------------|
+| NimBLE           | [`NimBLE-Steering-Server`](https://github.com/Berg0162/NimBLE-Steering-Server)       | ESP32 (ESP-IDF with NimBLE stack)      |
+| Bluedroid        | [`BLE-Steering-Server`](https://github.com/Berg0162/BLE-Steering-Server)             | ESP32 (ESP-IDF default BLE stack)      |
+
+These critical libraries encapsulate BLE setup and GATT handling, exposing a unified interface for steering input code.
+
 + HID specific library
    - [MPU6050_light](https://docs.arduino.cc/libraries/mpu6050_light)
-
-+ **Supported MCU's** with **NimBLE-Arduino**
-  + Espressif: ESP32, ESP32C3, ESP32S3
-  + Nordic: nRF51, nRF52 series (**Requires** using [n-able arduino core](https://github.com/h2zero/n-able-Arduino))
 
 ## 🧪 Testing & Validation
 
@@ -86,11 +90,35 @@ This repository does <b>not include or promote any circumvention of technologica
 If you are a <b>rights holder</b> and believe this project includes content that <b>violates your intellectual property rights</b>, please <b>open an issue</b> in this repository. We are committed to responding promptly and respectfully to legitimate concerns.
 </details>
 
+## 🛠 In Code Preference Selection
+In the header of the `BLE-Steering-Controller-MotionIMU_v01.ino` code file you will find a section, that needs to be aligned with your preferred setup:
+```C++
+// ========================================================
+// 🏁 Select BLE Stack
+// Uncomment *one* of the following lines to choose the BLE stack
+// ========================================================
+
+// #define USE_NIMBLE           // Use NimBLE-Arduino (lightweight)
+// #define USE_BLUEDROID        // Use default ESP32 Bluedroid stack
+
+// ========================================================
+// 📦 Include appropriate BLE Steering Server library
+// ========================================================
+
+#ifdef USE_NIMBLE
+  #include <NimBLESteeringServer.h>
+#elif defined(USE_BLUEDROID)
+  #include <BLESteeringServer.h>
+#else
+  #error "Please define a BLE stack: USE_NIMBLE or USE_BLUEDROID"
+#endif
+```
+
 ## 🚀 Quick Start
 
 1. Download or clone this repository.
 2. Unzip (if needed) and move the folder into your Arduino Sketchbook:
-3. Open the `.ino` file manually in Arduino IDE.
+3. Open the `.ino` file manually in Arduino IDE and set your preferred **Backend Library**
 4. Ensure required libraries are installed (see Dependencies).
 5. Compile and upload to your board.
 
