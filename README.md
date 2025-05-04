@@ -91,7 +91,7 @@ If you are a <b>rights holder</b> and believe this project includes content that
 </details>
 
 ## 🛠 In Code Preference Selection
-In the header of the `BLE-Steering-Controller-MotionIMU_v01.ino` code file you will find a section, that needs to be aligned with your preferred setup:
+In the header of the `.ino` code file you will find a section, that needs to be aligned with your preferred setup:
 ```C++
 // ========================================================
 // 🏁 Select BLE Stack
