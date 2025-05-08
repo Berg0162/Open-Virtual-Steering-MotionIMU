@@ -1,7 +1,3 @@
-/*
-
-*/
-
 #include "Filters.h"
 
 // A simplified one dimensional Kalman filter implementation
@@ -27,6 +23,10 @@ MPU6050 mpu(Wire);
 #define ROCKINGSTDDEVTHRESHOLD (4.0F)
 #define YAWANGLETHRESHOLD      (2.0F)
 #define YAWSTDDEVTHRESHOLD     (0.4F) 
+
+// Final Scaling variables
+#define SCALEFACTOR         (1.02F) // Set the scaling factor to your preference
+float scaleFactor = 1.0;            // Allows to tweak "Sensitiveness" of (leaning AND turning)
 
 // YAW variables
 #define INVERT_YAWANGLE_SIGN         // Invert(!) with Standard MPU mount -> left turn is negative, right turn is positive 
@@ -176,12 +176,17 @@ float getSteeringState(float Angle)
 // ------------------------------------------- PROCESS Y A W -------------------------------------------------------------------------
   if( (leftZ(mpuAngleZ-Yaw) && leftX(mpuAngleX)) || (rightZ(mpuAngleZ-Yaw) && rightX(mpuAngleX)) ) { 
       // The handle bars and the bike have turned both to the left or right -> give a follow up!
-      DEBUG_PRINTF("Span: [%03d ms] mpuAngleZ: %05.1f Dev.: %02.1f Sign: [%.0f]\n", (millis()-timeSpan), mpuAngleZ, Std_Deviation_AngleZ, sgn(mpuAngleZ));
-      DEBUG_PRINTF("Span: [%03d ms] mpuAngleX: %05.1f Dev.: %02.1f Sign: [%.0f]\n", (millis()-timeSpan), mpuAngleX, Std_Deviation_AngleX, sgn(mpuAngleX));
+      scaleFactor = SCALEFACTOR;                                // Set Scale Factor to default
+      //DEBUG_PRINTF("Span: [%03d ms] mpuAngleZ: %05.1f Dev.: %02.1f Sign: [%.0f]\n", (millis()-timeSpan), mpuAngleZ, Std_Deviation_AngleZ, sgn(mpuAngleZ));
+      //DEBUG_PRINTF("Span: [%03d ms] mpuAngleX: %05.1f Dev.: %02.1f Sign: [%.0f]\n", (millis()-timeSpan), mpuAngleX, Std_Deviation_AngleX, sgn(mpuAngleX));
   } else if (Std_Deviation_AngleZ > YAWSTDDEVTHRESHOLD) {       // Exceeding threshold? Update Yaw -> compensate for fast or spontaneous drift
-      DEBUG_PRINTF("--> Yaw updated! Old: [%4.1f] New: [%4.1f] Std Dev.: [%4.1f]\n", Yaw, mpuAngleZ, Std_Deviation_AngleZ);
+      //DEBUG_PRINTF("--> Yaw updated! Old: [%4.1f] New: [%4.1f] Std Dev.: [%4.1f]\n", Yaw, mpuAngleZ, Std_Deviation_AngleZ);
       Yaw = mpuAngleZ;                                          // Set Yaw to new position
-  } // else -> micro steering!
+      scaleFactor = 1.00;                                       // NO scaling
+  } else { 
+      // Typical case of "micro steering" -> (leaning XOR turning)
+      scaleFactor = 1.00;                                       // NO scaling
+  }
   prevAngleZ = mpuAngleZ;                                       // Set previous AngleZ value for the next round       
   yawAngle = setYawAngle(mpuAngleZ-Yaw);                        // Only relative deflection counts for steering
 //---------------------------------------------PROCESS R O L L ---------------------------------------------------------------------- 
@@ -192,9 +197,9 @@ float getSteeringState(float Angle)
       isRocking = true;
       DEBUG_PRINTLN(" --> ROCKING!");
       return 0.0;
-  } else {                                                       // Turning handlebars + Leaning the right way!
+  } else {                                                       // Turning handlebars AND Leaning are in Synch!
       isRocking = false; 
-      return (yawAngle + rollAngle);                            
+      return (yawAngle + rollAngle) * scaleFactor;               // Scale the outcome!            
   }
 } // end of getSteeringState()
 
